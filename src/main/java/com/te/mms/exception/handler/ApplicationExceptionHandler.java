@@ -15,11 +15,8 @@ public class ApplicationExceptionHandler {
 
 	@ExceptionHandler(value = MethodArgumentTypeMismatchException.class)
 	public ResponseEntity<ErrorResponse> handler(MethodArgumentTypeMismatchException exception) {
-		return ResponseEntity.<ErrorResponse>ofNullable(ErrorResponse
-				.builder()
-				.message("Only BOLLYWOOD OR HOLLYWOOD IS ALLOWED")
-				.status(HttpStatus.BAD_REQUEST)
-				.timestamp(LocalDateTime.now())
-				.build());
+		return ResponseEntity.<ErrorResponse>ofNullable(
+				ErrorResponse.builder().message(exception.getMessage() + " (BOLLYWOOD OR HOLLYWOOD IS CASE SENSITIVE)")
+						.status(HttpStatus.BAD_REQUEST).timestamp(LocalDateTime.now()).build());
 	}
 }
