@@ -59,4 +59,5 @@ public class MovieController {
 				.<ApiResponse>ofNullable(ApiResponse.builder().message("Get movies api worked successfully.")
 						.timestamp(LocalDateTime.now()).data(movies).status(HttpStatus.OK).build());
 	}
+	
 }
